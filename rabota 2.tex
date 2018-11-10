@@ -1,0 +1,64 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian] {babel}
+\usepackage{tikz}
+%\usetikzlibrary{calc} % для мат вычислений, пока не нужен
+\usepackage[european,cuteinductors, smartlabels]{circuitikz}
+\title{Практическая работа № 2}
+
+\author{Прокудин Борис Сергеевич}
+
+% Start the document
+\begin{document}
+\maketitle
+\begin{tikzpicture} [scale=0.6]
+\newcommand{\alfa } {30}
+\newcommand{\teta } {65}
+\newcommand {\D } {10}
+% этот угол(В) вычисляется сам...вроде при всех углах
+\newcommand {\B } {90-\teta+\alfa} 
+ % тетрадные клеточки
+ \draw[help lines] (-3,-8) grid (20,12);
+ % ось X1
+\draw[thin,->,>=stealth'] (0,0) - - (14,0) node[below] {$X_1$};
+% Линия перпендикулярная оси Х1
+\draw[thin,dashed,->,>=stealth'] (0,0) - - (0,12) node[left] {$X_1$};% для красоты стоит подогнать значения, и если нужно поменять направление
+%ось X2
+\draw[thin,->,>=stealth'] (0,0) - - ({12*cos(\teta) },{12*sin(\teta) }) node[left] {$X_2$};
+% Линия перпендикулярная оси Х2
+\draw[thin,dashed,->,>=stealth'] (0,0) - - ({12*cos(\teta-90) },{12*sin(\teta-90) }) node[below] {$X_2$};% для красоты стоит подогнать значения, и если нужно поменять направление
+% вектор х
+\draw[red,->,>=stealth'] (0,0) - - ({\D*cos(\alfa) },{\D*sin(\alfa) }) node[at end, above right] {$\vec{x}$};
+% Ковариантная линия (перпендикуляр к оси Х1)
+\draw[blue, dashed] ({\D*cos(\alfa) },{\D*sin(\alfa) }) - - ++({cos(90)},{-\D*sin(\alfa)}) node[at end,below right] {$x_1$} -- ({\D*cos(\alfa)},{-\D*cos(\alfa)/cos(\B-\alfa)*sin(\B-\alfa)});
+% контрвариантная линия к X2 ({sin(180)=0)
+\draw[green,  dashed] ({\D*cos(\alfa) },{\D*sin(\alfa) }) - - ({\D*sin(\alfa)*cos(\teta)/sin(\teta)},{\D*sin(\alfa)}) node[left,above] {$x^2$} - - (0,{\D*cos(90-\alfa)});
+% Ковариантная линия (перпендикуляр к оси X2)
+\draw[blue, dashed]  ({\D*cos(\alfa) },{\D*sin(\alfa) }) - - +({-(\D*sin(\teta-\alfa)*cos(90-\teta)},{(\D*sin(\teta-\alfa)*sin(90-\teta)}) node[at end,above left] {$x_2$} -- (0,{\D*cos(\teta-\alfa)/cos(90-\teta)});
+% контрвариантная к оси Х1
+\draw[red, dashed]  ({\D*cos(\alfa) },{\D*sin(\alfa) }) - - +({-cos(\teta)*\D*sin(\alfa)/sin(\teta)},{-\D*sin(\alfa)}) node[at end, below right] {$x^1$} --({\D*cos(\B)*cos((\B)-\alfa)},{-\D*cos(\B)*sin((\B)-\alfa)});
+
+%\draw[red, dashed] (0,0) --  
+
+\end{tikzpicture}
+
+%\begin{tikzpicture}[scale=0.5]<br>
+ % \draw[help lines] (0,0) grid (4,3);<br>
+  %\fill [red]   ($2*(1,1)$)              circle (2pt);<br>
+  %\fill [green] (${1+1}*(1,.5)$)         circle (2pt);<br>
+ % \fill [blue]  ($cos(0)*sin(90)*(1,1)$) circle (2pt);<br>
+ % \fill [black] (${3*(4-3)}*(1,0.5)$)    circle (2pt);<br>
+%\end{tikzpicture}
+
+
+
+%\draw[green] (0,0) - - ++({cos(90)},{\D*sin(\alfa)});
+%\draw[green] (0,0) - - ++(\D*sin\alfa*ctg\teta,\D*sin\alfa);
+
+
+ %\draw[red] ({\D*cos(\alfa) },{\D*sin(\alfa) }) - - ++({-\D*cos(\alfa)},{sin(180)}); непомню к чему это(((
+
+
+% КАК ЗАПИХНУТЬ ЧИСЛО В МОДУЛЬ?????
+\end{document}
