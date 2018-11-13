@@ -12,14 +12,14 @@
 % Start the document
 \begin{document}
 \maketitle
-\begin{tikzpicture} [scale=0.6]
+\begin{tikzpicture}% [scale=0.6]
 \newcommand{\alfa } {30}
 \newcommand{\teta } {65}
 \newcommand {\D } {10}
 % этот угол(В) вычисляется сам...вроде при всех углах
 \newcommand {\B } {90-\teta+\alfa} 
  % тетрадные клеточки
- \draw[help lines] (-3,-8) grid (20,12);
+% \draw[help lines] (-3,-7) grid (17,14);
  % ось X1
 \draw[thin,->,>=stealth'] (0,0) - - (14,0) node[below] {$X_1$};
 % Линия перпендикулярная оси Х1
@@ -37,28 +37,33 @@
 % Ковариантная линия (перпендикуляр к оси X2)
 \draw[blue, dashed]  ({\D*cos(\alfa) },{\D*sin(\alfa) }) - - +({-(\D*sin(\teta-\alfa)*cos(90-\teta)},{(\D*sin(\teta-\alfa)*sin(90-\teta)}) node[at end,above left] {$x_2$} -- (0,{\D*cos(\teta-\alfa)/cos(90-\teta)});
 % контрвариантная к оси Х1
-\draw[red, dashed]  ({\D*cos(\alfa) },{\D*sin(\alfa) }) - - +({-cos(\teta)*\D*sin(\alfa)/sin(\teta)},{-\D*sin(\alfa)}) node[at end, below right] {$x^1$} --({\D*cos(\B)*cos((\B)-\alfa)},{-\D*cos(\B)*sin((\B)-\alfa)});
+\draw[green, dashed]  ({\D*cos(\alfa) },{\D*sin(\alfa) }) - - +({-cos(\teta)*\D*sin(\alfa)/sin(\teta)},{-\D*sin(\alfa)}) node[at end, below right] {$x^1$} --({\D*cos(\B)*cos((\B)-\alfa)},{-\D*cos(\B)*sin((\B)-\alfa)});
 
-%\draw[red, dashed] (0,0) --  
+% Обозначение угла ALPHA
+\draw[thin,<->] (1.5,0) arc(0:\alfa:1.5) node[midway,right] {$\alpha=\alfa^\circ$};
+% Обозначение угла THETA
+\draw[thin,<->] (5,0) arc(0:\teta:5) node[midway,right] {$\Theta=\teta^\circ$};% стоит получше расположить надпись
+
+% Единичные векторы
+\draw[thin,->,>=stealth'] (0,0) -- (1,0) node[below right] {$\vec{e_1}$};
+
+\draw[thin,->,>=stealth'] (0,0) -- (0,1) node[above left] {$\vec{e^2}$};
+
+\draw[thin,->,>=stealth'] (0,0) -- ({cos(\teta)},{sin(\teta}) node[at end, right ] {$\vec{e_2}$};
+
+\draw[thin,->,>=stealth'] (0,0) -- ({cos(90-\teta)},{-sin(90-\teta}) node[below] {$\vec{e^1}$};
+
+
+
 
 \end{tikzpicture}
 
 %\begin{tikzpicture}[scale=0.5]<br>
- % \draw[help lines] (0,0) grid (4,3);<br>
   %\fill [red]   ($2*(1,1)$)              circle (2pt);<br>
   %\fill [green] (${1+1}*(1,.5)$)         circle (2pt);<br>
  % \fill [blue]  ($cos(0)*sin(90)*(1,1)$) circle (2pt);<br>
  % \fill [black] (${3*(4-3)}*(1,0.5)$)    circle (2pt);<br>
 %\end{tikzpicture}
-
-
-
-%\draw[green] (0,0) - - ++({cos(90)},{\D*sin(\alfa)});
-%\draw[green] (0,0) - - ++(\D*sin\alfa*ctg\teta,\D*sin\alfa);
-
-
- %\draw[red] ({\D*cos(\alfa) },{\D*sin(\alfa) }) - - ++({-\D*cos(\alfa)},{sin(180)}); непомню к чему это(((
-
 
 % КАК ЗАПИХНУТЬ ЧИСЛО В МОДУЛЬ?????
 \end{document}
