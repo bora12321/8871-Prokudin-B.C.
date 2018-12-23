@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{tikz}
+\usepackage[european,cuteinductors,smartlabels]{circuitikz}
+\usepackage{siunitx}
+\title{Практическая работа №6}
+\author{студент: группы 8871 Прокудин Б.С.}
+% Конец преамбулы
+\begin{document}
+\maketitle
+
+
+\begin{tikzpicture} 
+\newcommand{\D}{6}
+\foreach \f in {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190,200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350} 
+\draw[red,->,>=stealth'] (0,0) -- ({\D*cos(\f)},{\D*sin(\f)}) node[right] {$\f$} -- ++ ({(\D/5)*cos((\f-180)+3*(\f))},{(\D/5)*sin((\f-180)+3*(\f))}); 
+\draw[thin,<->] (2,0) arc(0:10:2) node[midway,right] {$\omega$};
+\draw[thin,<->] ({(\D-1)*cos(10)},{(\D-1)*sin(10)}) arc(0:30:-1) node[midway,left] {$3\omega$};
+\end{tikzpicture}
+\end{document}
