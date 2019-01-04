@@ -1,0 +1,185 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\usepackage[T2A]{fontenc}             
+\usepackage{mathtext}                 
+\usepackage[utf8]{inputenc}           
+\usepackage[english, russian]{babel}   
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=2cm]{geometry} % поля страницы
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{makecell} % пакет для таблиц..чёт плохо работает
+\author{Прокудин Б.С.}
+\title{Практическая работа №5}
+
+\begin{document}
+
+\maketitle
+
+Дана функция (ДНФ):
+$$F=A\bar{B}C+B\bar{D}C+\bar{A} \bar{B}\bar{D}$$
+Необходимо сделать:\\
+1. Таблицу истинности.\\
+2. СДНФ.\\
+3. СКНФ.\\
+4. Карты Карно.
+
+\begin{table}[h]
+%\renewcommand{\arraystretch}{1.8} % всех высота строк
+\renewcommand{\tabcolsep}{0.15cm} % отступ от текста до линии разметки таблицы
+\caption{\label{TRT1} Таблица истинности. Функции (ДНФ):  $F=A\bar{B}C+B\bar{D}C+\bar{A} \bar{B}\bar{D}$}
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline % начертить горизонтальную линию.
+
+\multicolumn{4}{|c|}{Аргументы} & \multicolumn{8}{|c|}{Логические операции} \\
+\hline
+
+\rule{0cm}{0.5cm}% Расширяем строку вверх. т.к. не было видно обозначения отрицания (штрихи) 
+
+% Заполняем логические операции чуть меньшим шрифтом
+A & B & C & D & 
+\small $A \bar{B} $ & 
+\small $(A \bar{B})C $ & 
+\small $A \bar{D}$&
+\small $(A\bar{D}) C $ & 
+\small $\bar{A} \bar{B}$ &
+\small $(\bar{A} \bar{B}) \bar{D}$ & 
+\small $((A \bar{B}) C)+((A \bar{B}) C)$ & 
+\small $(((A\bar{B}) C)+((A \bar{B}) C))+((\bar{A} \bar{B}) \bar{D})$\\
+\hline
+  
+  0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+  0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 0 \\
+  0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+  0 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+  0 & 1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 \\
+  0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 1 \\
+  1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+  1 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 \\
+  1 & 0 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+  1 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 \\
+  1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+  1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+  1 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 \\
+  1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 1 \\
+  \hline
+  
+\end{tabular}
+\end{table} 
+
+Совершенная дизъюнктивная нормальная форма (СДНФ)
+$$ F=\bar{A} \land \bar{B} \land \bar{C} \land \bar{D}\lor
+\bar{A} \land \bar{B} \land C \land \bar{D}\lor
+A \land \bar{B} \land C \land \bar{D}\lor
+A \land \bar{B} \land C \land D\lor
+A \land B \land C \land \bar{D}$$
+
+
+Совершеннаяконъюнктивная нормальная форма (СКНФ)
+$$ F=(A \lor B \lor C \lor \bar{D})\land 
+(A \lor B \lor \bar{C} \lor \bar{D})\land 
+(A\lor \bar{B} \lor C \lor D)\land 
+(A \lor \bar{B} \lor C \lor \bar{D})\land 
+(A \lor \bar{B} \lor \bar{C} \lor D)\land 
+(A \lor \bar{B} \lor \bar{C} \lor \bar{D})$$
+$$\land(\bar{A} \lor B \lor C \lor D)\land 
+(\bar{A} \lor B \lor C \lor \bar{D})\land 
+(\bar{A} \lor \bar{B} \lor C \lor D)\land 
+(\bar{A} \lor \bar{B} \lor C \lor \bar{D})\land 
+(A \lor B \lor C \lor D)
+$$
+
+\begin{table}
+\caption{\label{TRT2} Карта карно}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\diaghead{\theadfont 1111111111}
+{AB}{CD}
+&00&01&11&10 \\
+\hline
+00&1&0&0&1 \\
+\hline
+01&0&0&0&0 \\
+\hline
+11&0&0&0&1 \\
+\hline
+10&0&0&1&1 \\
+\hline
+
+%\diaghead{}{}
+%\multirow{2}{*}{} & 
+%\diaghead{\theadfont Diag ColumnmnHead II} {Diag\\Column Head I}{Diag Column\\Head II}
+
+\end{tabular}
+\end{table} 
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Вариант оформления выражений в таблице, но он некрасиво выглядит.
+ A & B & C & D & 
+\rotatebox{90}{$A\land \bar{B} $} & 
+\rotatebox{90}{$(A\land \bar{B})\land C $} & 
+\rotatebox{90}{$A\land \bar{D}$}&
+\rotatebox{90}{$(A\land \bar{D})\land C $} & 
+\rotatebox{90}{$\bar{A}\land \bar{B}$} &
+\rotatebox{90}{$(\bar{A}\land \bar{B})\land \bar{D}$} & 
+\rotatebox{90}{$((A\land \bar{B})\land C)\lor ((A\land \bar{B})\land C)$} & 
+ \rotatebox{90}{$(((A\land \bar{B})\land C)\lor((A\land \bar{B})\land C))\lor((\bar{A}\land \bar{B})\land \bar{D})$}\\
+ %Вариант оформления выражений в таблице, не влезает
+  A & B & C & D & 
+$A \bar{B} $ & 
+$(A \bar{B})C $ & 
+$A \bar{D}$&
+$(A\bar{D}) C $ & 
+$\bar{A} \bar{B}$ &
+$(\bar{A} \bar{B}) \bar{D}$ & 
+$((A \bar{B}) C)+((A \bar{B}) C)$ & 
+$(((A\bar{B}) C)+((A \bar{B}) C))+((\bar{A} \bar{B}) \bar{D})$}\\
