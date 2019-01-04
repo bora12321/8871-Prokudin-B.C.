@@ -1,0 +1,52 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\author{Прокудин Б.С.}
+\title{Практическая работа №4}
+
+\begin{document}
+\maketitle
+\centering
+
+ Поворот молекулы метана вокруг оси Y на $\frac{2\pi}{3}$ и после вокруг оси Z на $\frac{\pi}{6}$ 
+
+\begin{tikzpicture}
+
+\begin{scope}[xscale=5,yscale=5] 
+
+\draw [rounded corners=4pt,color=white,ball color=blue,smooth]
+(0,0,0) circle (0.3) node {$H_1$};%1
+
+\draw [rounded corners=4pt,color=white,ball color=blue,smooth]
+(-0.433,-0.25,0.866) circle (0.3) node {$H_2$};%2
+
+\draw [rounded corners=4pt,color=white,ball color=blue,smooth]
+(-0.6495,0.625,0.433) circle (0.3) node {$H_3$};%3
+
+\draw [rounded corners=4pt,color=white,ball color=red,smooth]
+(-0.5174,0.0346,0.331) circle (0.4) node {C};%C
+
+\draw [rounded corners=4pt,color=white,ball color=blue,smooth]
+(-0.9873,-0.2367,0.0248) circle (0.3) node {$H_4$};%4
+
+\end{scope} 
+\end{tikzpicture}
+\end{document}
+
+Начальные координаты атомов 
+% Н2_0 (1,0,0) Н3_0 (0.5,0.866,0) Н4_0(0.5,0.2887,0.8165)
+% C_0 (0.5,0.2887,0.204)
+
+% Н2_у (-0.5,0,0.866)  Н3_у (-0.25,0.866,0.433)    Н4_у (-0.9734,0.2887,0.02475) 
+% C_у   (-0.43083,0.2887,0.33095)
+
+% Н2_у,z (-4.333,-0.25,0.866)    Н3_у,z (-0.6495,0.625,0.433)   Н4_у,z (-0.9873,-0.2367,0.0248) 
+% C2_у,z (-0.5174,0.0346,0.331)
+
+
+
+
